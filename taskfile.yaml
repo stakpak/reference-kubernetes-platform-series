@@ -1,0 +1,60 @@
+version: '3'
+
+tasks:
+  apply-00:
+    dir: 00_foundations
+    cmds:
+      - terraform apply -auto-approve
+    silent: true
+  apply-10:
+    dir: 10_platform
+    cmds:
+      - terraform apply -auto-approve
+    silent: true
+  apply-15:
+    dir: 15_platform
+    cmds:
+      - terraform apply -auto-approve
+    silent: true
+  apply-100:
+    dir: 100_app
+    cmds:
+      - terraform apply -auto-approve
+    silent: true
+
+
+  destroy-00:
+    dir: 00_foundations
+    cmds:
+      - terraform destroy -auto-approve
+    silent: true
+  destroy-10:
+    dir: 10_platform
+    cmds:
+      - terraform destroy -auto-approve
+    silent: true
+  destroy-15:
+    dir: 15_platform
+    cmds:
+      - terraform destroy -auto-approve
+    silent: true
+  destroy-100:
+    dir: 100_app
+    cmds:
+      - terraform destroy -auto-approve
+    silent: true
+
+
+  apply-all:
+    cmds:
+      - task: apply-00
+      - task: apply-10
+      - task: apply-15
+      - task: apply-100
+
+  destroy-all:
+    cmds:
+      - task: destroy-100
+      - task: destroy-15
+      - task: destroy-10
+      - task: destroy-00
